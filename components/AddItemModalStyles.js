@@ -2,17 +2,20 @@ import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
     modal: { 
-      position: 'relative',
+      position: 'absolute',
+      top: 0,
+      left: 0,
       width: '100%',
       height: '100%',
+      backgroundColor: 'white',
       flexDirection: 'row', 
       justifyContent: 'space-around', 
       alignItems: 'center' 
     },
     closeButton: {
       position: 'absolute',
-      top: 10,
-      left: 10
+      top: 20,
+      right: 15
     },    
     input: {
       borderColor: 'black', 

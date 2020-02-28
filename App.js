@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { TextInput, Button, View } from 'react-native';
+import { TouchableOpacity, Text, View } from 'react-native';
 
 // components
 import AddItemModal from './components/AddItemModal'
@@ -12,13 +12,12 @@ export default function App() {
   const [listItems, setListItems] = useState([]);
   const [showModal, setShowModal] = useState(false);
 
-  function addListItem(){
+  function addListItem(inputText){
     const newItem = {
       key: Math.random().toString(),
       value: inputText
     }
     setListItems([...listItems, newItem]);
-    setInputText('');
   }
 
   function removeListItem(itemToDelete){
@@ -28,13 +27,19 @@ export default function App() {
 
   return (
     <View style={appStyles.pageView}>
-      {showModal && <AddItemModal addListItem={addListItem} closeModal={() => setShowModal(false)} />}
+      <AddItemModal
+       addListItem={addListItem} 
+       showModal={showModal}
+       closeModal={() => setShowModal(false)} 
+      />
 
-      <Button 
+      <TouchableOpacity 
         style={appStyles.showModalButton} 
         title="+" 
         onPress={() => setShowModal(true)} 
-      />
+      >
+        <Text style={appStyles.showModalButtonText}>+</Text>
+      </TouchableOpacity>
       <ListItems listItems={listItems} removeListItem={removeListItem} />
     </View>
   );
