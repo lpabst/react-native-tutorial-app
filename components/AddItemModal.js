@@ -3,7 +3,6 @@ import {Modal, View, Button, TextInput} from 'react-native';
 import addItemModalStyles from './AddItemModalStyles'
 
 export default function AddItemModal({addListItem, closeModal, showModal}) {
-    console.log(showModal)
     const [inputText, setInputText] = useState('');
 
     function addItem(){
