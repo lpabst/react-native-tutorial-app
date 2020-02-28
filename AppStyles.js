@@ -6,16 +6,12 @@ const styles = StyleSheet.create({
       paddingLeft: 30, 
       paddingRight: 30 
     },
-    inputContainer: { 
-      flexDirection: 'row', 
-      justifyContent: 'space-around', 
-      alignItems: 'center' 
-    },
-    input: {
-      borderColor: 'black', 
-      borderWidth: 1, 
-      padding: 5, 
-      width: '80%'
+    showModalButton:{
+      width: 40,
+      height: 40,
+      borderColor: 'black',
+      borderWidth: 1,
+      fontSize: 26
     },
     listItemsContainer: {
       paddingTop: 30,

@@ -1,11 +1,16 @@
 import React, { useState } from 'react';
 import { TextInput, Button, View } from 'react-native';
-import appStyles from './AppStyles';
+
+// components
+import AddItemModal from './components/AddItemModal'
 import ListItems from './components/ListItems';
 
+// we can optionally store styles in separate file for modularity
+import appStyles from './AppStyles';
+
 export default function App() {
-  const [inputText, setInputText] = useState('');
   const [listItems, setListItems] = useState([]);
+  const [showModal, setShowModal] = useState(false);
 
   function addListItem(){
     const newItem = {
@@ -23,15 +28,13 @@ export default function App() {
 
   return (
     <View style={appStyles.pageView}>
-      <View style={appStyles.inputContainer}>
-        <TextInput 
-          placeholder="Type Here..."
-          style={appStyles.input}
-          onChangeText={setInputText}
-          value={inputText}
-        />
-        <Button title="ADD" onPress={addListItem} />
-      </View>
+      {showModal && <AddItemModal addListItem={addListItem} closeModal={() => setShowModal(false)} />}
+
+      <Button 
+        style={appStyles.showModalButton} 
+        title="+" 
+        onPress={() => setShowModal(true)} 
+      />
       <ListItems listItems={listItems} removeListItem={removeListItem} />
     </View>
   );
